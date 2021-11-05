@@ -8,7 +8,7 @@ import streamlit as st
 
 import ee
 import geemap
-ee.Initialize()
+#ee.Initialize()
 
 india_gdf = gpd.read_file(config.INDIAN_DISTRICT_SHAPEFILE)
 
