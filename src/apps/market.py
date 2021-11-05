@@ -96,6 +96,6 @@ def app():
                 market_choice = st.selectbox('Select a market to view:', market_list, on_change=plot_market_data)
                 plot_container = st.container()
 
-                st.metric("Mean price in market", "9 INR", "-8% since 3 months ago")
+                st.metric("Mean price in market", "816 INR", "-8% since 3 months ago")
             else:
                 st.error('Unknown district')
