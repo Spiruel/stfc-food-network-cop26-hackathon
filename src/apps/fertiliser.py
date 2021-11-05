@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import geemap
 import datetime
 import utils
+import config
 
 fertiliser_dic = {
         'NHigh': """The N value of soil is high and might give rise to weeds.
@@ -128,7 +129,7 @@ def app():
                     st.bar_chart(precip_df)
         
         st.markdown("**Soil management recommendations**")
-        df = pd.read_csv('../data/archive/Fertilizer Prediction.csv')
+        df = pd.read_csv(config.FERTILISER_DF)
         crop_name = st.selectbox('Select a crop type', df['Crop Type'].unique())
 
         n = st.slider('Nitrogen (N) value in soil', min_value=0, max_value=100)

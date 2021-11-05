@@ -1,6 +1,7 @@
 OPENWEATHER_KEY='dfeb82012c27866c0d2ba54773411542'
 DATAGOV_IN_KEY='579b464db66ec23bdd000001ab75a7d6c3b6409069e668b3e386b1b9'
-INDIAN_DISTRICT_SHAPEFILE='../data/geospatial/india_districts.shp'
+INDIAN_DISTRICT_SHAPEFILE='data/geospatial/india_districts.shp'
+FERTILISER_DF='data/archive/Fertilizer Prediction.csv'
 
 crops=['tomato','paddy','brinjal','redgram','lemon','sweet orange',
 'foxtail millet','groundnut','banana','onion','ridge gourd','paddy(bpt)'
