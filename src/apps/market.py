@@ -33,7 +33,7 @@ def app():
     col1, col2, = st.columns(2)
     with col1:
         lat, lon = 55,0
-        crop_choice = st.selectbox("Select a crop", config.crops, index=0)
+        crop_choice = st.selectbox("Select a crop", sorted(config.crops), index=0)
 
         keyword = st.text_input("Search location:", "")
         if keyword:
@@ -73,8 +73,14 @@ def app():
             if district != 'unknown':
                 with st.spinner(text=f'Getting market data...'):
                     year = 2021
-                    df = utils.data_gov_in_req('8d779906-fe3b-4b1c-a081-6b0af25a8ab7')
-                    df = df.loc[df.district == district]
+                    df_2021 = utils.data_gov_in_req("2fd1940c-f831-42ae-8b3c-b87fc2c44183")
+                    print(df_2021.columns)
+                    df_2020 = utils.data_gov_in_req("25c977b6-8e8c-4452-87fb-52d626ec5374")
+                    print(df_2020.columns)
+                    #df_2019 = utils.data_gov_in_req("8d779906-fe3b-4b1c-a081-6b0af25a8ab7")
+                    df = pd.DataFrame([df_2021, df_2020])
+                    print(df, df.columns)
+                    df = df.loc[df['district'] == district]
                 
                 st.metric("Mean price in district", f"{df.modal_price.mean():.2f} INR", f"+99% compared to {year-1}")
                 #st.table(df.head())
@@ -86,7 +92,7 @@ def app():
                     plot_df = plot_df[['min_price', 'max_price', 'modal_price']]
                     plot_container.bar_chart(plot_df)
 
-                market_choice = st.selectbox('Select a market to view', market_list, on_change=plot_market_data)
+                market_choice = st.selectbox('Select a market to view:', market_list, on_change=plot_market_data)
                 plot_container = st.container()
 
                 st.metric("Wind", "9 mph", "-8%")
