@@ -7,10 +7,11 @@ import geopandas as gpd
 import streamlit as st
 import ee
 import geemap
+import os
 
+os.environ["EARTHENGINE_TOKEN"] = st.secrets["EARTHENGINE_TOKEN"]
 SECRET_KEY = st.secrets["EARTHENGINE_TOKEN"]
-print(SECRET_KEY)
-ee.Authenticate(authorization_code=SECRET_KEY)
+#ee.Authenticate(authorization_code=SECRET_KEY)
 ee.Initialize()
 
 india_gdf = gpd.read_file(config.INDIAN_DISTRICT_SHAPEFILE)
