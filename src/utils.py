@@ -5,7 +5,7 @@ from io import BytesIO
 import shapely
 import geopandas as gpd
 import streamlit as st
-
+import os
 import ee
 import geemap
 SECRET_KEY = os.getenv("EARTHENGINE_TOKEN")
