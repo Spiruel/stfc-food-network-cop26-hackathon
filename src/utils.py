@@ -9,7 +9,8 @@ import ee
 import geemap
 
 SECRET_KEY = st.secrets["EARTHENGINE_TOKEN"]
-ee.Authenticate(SECRET_KEY)
+print(SECRET_KEY)
+ee.Authenticate(authorization_code=SECRET_KEY)
 ee.Initialize()
 
 india_gdf = gpd.read_file(config.INDIAN_DISTRICT_SHAPEFILE)
