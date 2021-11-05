@@ -11,3 +11,4 @@ rioxarray
 seaborn
 shapely
 xarray
+sklearn
