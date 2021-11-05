@@ -7,3 +7,4 @@ git+git://github.com/giswqs/leafmap
 git+git://github.com/giswqs/geemap
 pandas
 shapely
+sklearn

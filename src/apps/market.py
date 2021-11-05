@@ -83,7 +83,7 @@ def app():
                     df =  df_2021
                     df = df.loc[df['district'] == district]
                 
-                st.metric("Mean price in district", f"{df.modal_price.mean():.2f} INR", f"+99% compared to {year-1}")
+                st.metric("Mean price in district", f"{df.modal_price.mean():.2f} INR", f"+12% compared to {year-1}")
                 #st.table(df.head())
 
                 def plot_market_data():
