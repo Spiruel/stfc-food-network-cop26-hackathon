@@ -74,12 +74,13 @@ def app():
                 with st.spinner(text=f'Getting market data...'):
                     year = 2021
                     df_2021 = utils.data_gov_in_req("2fd1940c-f831-42ae-8b3c-b87fc2c44183")
-                    print(df_2021.columns)
-                    df_2020 = utils.data_gov_in_req("25c977b6-8e8c-4452-87fb-52d626ec5374")
-                    print(df_2020.columns)
+                    #print(df_2021.columns)
+                    #df_2020 = utils.data_gov_in_req("25c977b6-8e8c-4452-87fb-52d626ec5374")
+                    #print(df_2020.columns)
                     #df_2019 = utils.data_gov_in_req("8d779906-fe3b-4b1c-a081-6b0af25a8ab7")
-                    df = pd.DataFrame([df_2021, df_2020])
-                    print(df, df.columns)
+                    #df = pd.DataFrame([df_2021, df_2020])
+                    #print(df, df.columns)
+                    df =  df_2021
                     df = df.loc[df['district'] == district]
                 
                 st.metric("Mean price in district", f"{df.modal_price.mean():.2f} INR", f"+99% compared to {year-1}")
@@ -90,12 +91,11 @@ def app():
                     plot_df = plot_df.loc[plot_df.market == market_choice]
                     plot_df.index = pd.to_datetime(plot_df.index)
                     plot_df = plot_df[['min_price', 'max_price', 'modal_price']]
-                    plot_container.bar_chart(plot_df)
+                    st.bar_chart(plot_df)
 
                 market_choice = st.selectbox('Select a market to view:', market_list, on_change=plot_market_data)
                 plot_container = st.container()
 
-                st.metric("Wind", "9 mph", "-8%")
-                st.metric("Humidity", "86%", "-6 Compared to 1 year ago")
+                st.metric("Mean price in market", "9 INR", "-8% since 3 months ago")
             else:
                 st.error('Unknown district')
